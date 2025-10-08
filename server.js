@@ -40,7 +40,9 @@ const workSchema = new mongoose.Schema ({
         type: Date,
         required: false // Slutdatum behövs inte om det är ett pågående jobb
     }
-})
+});
+
+const work = mongoose.model("Work", workSchema);
 
 // Routes
 app.get("/api", async (req, res) => {
