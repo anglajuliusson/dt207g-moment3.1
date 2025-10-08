@@ -2,6 +2,7 @@
 
 const express = require('express');
 const cors = require("cors");
+const mongoose = require("mongoose"); // Inkludera mongoose
 
 // Init express
 const app = express();
