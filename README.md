@@ -1,4 +1,4 @@
-#API
+# API
 
 Detta repository innehåller kod för ett enklare REST API byggt med **Express** och **MongoDB (Mongoose)**.  
 API:et hanterar olika jobberfarenheter och fungerar som ett digitalt CV.  
