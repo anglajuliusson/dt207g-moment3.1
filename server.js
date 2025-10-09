@@ -71,6 +71,28 @@ app.post("/works", async(req, res) => {
     }
 });
 
+// PUT-anrop, uppdatera jobberfarenhet
+app.put("/works/:id", async (req, res) => {
+    try {
+        const {id} = req.params; // Hämta ID från URL:en
+        // Uppdatera dokument med nya värden
+        const updatedWork = await Work.findByIdAndUpdate(id, req.body, {
+            new: true, // Returnera det uppdaterade dokumentet
+            runValidators: true // Kör mongoose-valideringarna
+        });
+
+        if (!updatedWork) {
+            // Om inget dokument hittas med det angivna ID:t
+            return res.status(404).json({ message: "Jobberfarenhet hittades inte" });
+        }
+        // Returnera det uppdaterade objektet
+        return res.json({message: `Jobberfarenhet uppdaterad: ${id}`, updatedWork});
+    } catch (error) {
+        // Fel vid validering eller uppdatering
+        return res.status(400).json({ error: error.message });
+    }
+});
+
 app.listen(port, () => {
     console.log('Server is running on port: ' + port);
 });
