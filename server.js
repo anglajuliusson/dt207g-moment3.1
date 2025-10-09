@@ -22,19 +22,19 @@ mongoose.connect("mongodb://localhost:27017/work_experiences").then(() => {
 const workSchema = new mongoose.Schema ({
     companyname: {
         type: String,
-        required: true
+        required: [true, "Du måste ange företagsnamn"],
     },
     jobtitle: {
         type: String,
-        required: true
+        required: [true, "Du måste ange jobbtitel"],
     },
     location: {
         type: String,
-        required: true
+        required: [true, "Du måste ange plats"],
     },
     startdate: {
         type: Date,
-        required: true
+        required: [true, "Du måste ange startdatum"],
     },
     enddate: {
         type: Date,
