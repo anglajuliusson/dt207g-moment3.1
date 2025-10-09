@@ -42,11 +42,22 @@ const workSchema = new mongoose.Schema ({
     }
 });
 
-const work = mongoose.model("Work", workSchema);
+const Work = mongoose.model("Work", workSchema);
 
 // Routes
 app.get("/api", async (req, res) => {
     res.json({message: "Welcome to this API"});
+});
+
+// GET-anrop
+app.get("/works", async(req, res) => {
+    try {
+        let result = await Work.find({}); // Hämta in alla jobb
+
+        return res.json(result); // Skicka med resultatet
+    } catch(error) {
+        return res.status(500).json(error) // Felmeddelande om fel vid anrop
+    }
 });
 
 app.listen(port, () => {
