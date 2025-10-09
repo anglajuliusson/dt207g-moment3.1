@@ -14,12 +14,13 @@ API:t erbjuder följande grundläggande funktioner:
 - Stöd för **CORS**, vilket gör det möjligt att testköra API:t från andra domäner eller portar (t.ex. från en frontend-app)
 
 ## API-anrop
-Metod	| Ändpunkt	| Beskrivning
-GET	| /works	| Hämtar alla jobberfarenheter
-GET	| /works/:id |	Hämtar en specifik jobberfarenhet via ID
-POST	| /works	| Lägger till en ny jobberfarenhet
-PUT	| /works/:id	| Uppdaterar en befintlig jobberfarenhet
-DELETE	| /works/:id	| Tar bort en jobberfarenhet
+|Metod	| Ändpunkt	| Beskrivning|
+|-------|-----------|------------|
+|GET	| /works	| Hämtar alla jobberfarenheter|
+|GET	| /works/:id |	Hämtar en specifik jobberfarenhet via ID|
+|POST	| /works	| Lägger till en ny jobberfarenhet|
+|PUT	| /works/:id	| Uppdaterar en befintlig jobberfarenhet|
+|DELETE	| /works/:id	| Tar bort en jobberfarenhet|
 
 ## Länk
 En lokal version av API:et körs på följande adress:  
@@ -33,7 +34,7 @@ Alla jobberfarenheter nås via:
 Varje jobberfarenhet sparas som ett dokument i samlingen works i MongoDB, baserat på följande schema:
 
 |Fält	        | Typ    |	Obligatoriskt |	Beskrivning|
-|----------- -|--------|----------------|------------|
+|------------|--------|----------------|------------|
 |companyname	| String |	✅ |	Namn på företaget
 |jobtitle	    | String |	✅ |	Jobbtitel eller roll
 |location	    | String |	✅ |	Plats för anställningen
