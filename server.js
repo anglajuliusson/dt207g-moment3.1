@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017/work_experiences").then(() => {
 
 // Work Schema
 const workSchema = new mongoose.Schema ({
-    companyName: {
+    companyname: {
         type: String,
         required: true
     },
@@ -49,14 +49,25 @@ app.get("/api", async (req, res) => {
     res.json({message: "Welcome to this API"});
 });
 
-// GET-anrop
+// GET-anrop, hämta alla sparade jobberfarenheter
 app.get("/works", async(req, res) => {
     try {
         let result = await Work.find({}); // Hämta in alla jobb
 
         return res.json(result); // Skicka med resultatet
     } catch(error) {
-        return res.status(500).json(error) // Felmeddelande om fel vid anrop
+        return res.status(500).json(error); // Felmeddelande om fel vid anrop
+    }
+});
+
+// POST-anrop, lägg till jobberfarenhet
+app.post("/works", async(req, res) => {
+    try {
+        let result = await Work.create(req.body);
+
+        return res.json(result);
+    } catch(error) {
+        return res.status(400).json(error);
     }
 });
 
