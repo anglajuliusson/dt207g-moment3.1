@@ -93,6 +93,25 @@ app.put("/works/:id", async (req, res) => {
     }
 });
 
+// DELETE-anrop, radera jobberfarenhet
+app.delete("/works/:id", async (req, res) => {
+    try {
+        const {id} = req.params; // Hämta ID från URL:en
+        // Ta bort dokumentet
+        const deletedWork = await Work.findByIdAndDelete(id);
+
+        if (!deletedWork) {
+            // Om inget dokument hittas med det angivna ID:t
+            return res.status(404).json({ message: "Jobberfarenhet hittades inte" });
+        }
+        // Bekräftelse på att dokumentet togs bort
+        return res.json({ message: `Jobberfarenhet borttagen ${id}`, deletedWork });
+    } catch (error) {
+        // Fel vid borttagning
+        return res.status(400).json({ error: error.message });
+    }
+});
+
 app.listen(port, () => {
     console.log('Server is running on port: ' + port);
 });
