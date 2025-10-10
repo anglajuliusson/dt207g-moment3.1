@@ -65,7 +65,7 @@ app.post("/works", async(req, res) => {
     try {
         let result = await Work.create(req.body);
 
-        return res.json(result);
+        return res.json({result, message: "Jobberfarenhet sparad!"});
     } catch(error) {
         return res.status(400).json(error);
     }
